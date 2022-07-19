@@ -1,0 +1,14 @@
+/* Diese CSS-Datei ist relevant für die training_overview.php Seite. */
+.header {
+  text-align: center;
+}
+.picture {
+  width: 400px;
+  height: 150px;
+}
+
+@media (max-width: 500px) {
+  .last_item {
+    overflow: hidden;
+  }
+}

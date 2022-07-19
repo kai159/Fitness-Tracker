@@ -1,0 +1,39 @@
+/* Diese CSS-Datei ist relevant für alle Seiten die eine Anzeige von den Trainings/Übungen haben. */
+.main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.element {
+  text-align: center;
+  border: 1px solid black;
+  margin: 4px;
+  padding: 4px;
+  border-radius: 4pt;
+}
+select,
+button {
+  margin-bottom: 8px;
+}
+.text_center {
+  text-align: center;
+}
+.col_blue {
+  color: 	#0645AD;
+}
+
+@media (max-width: 500px) {
+  .element{
+    width: 300px;
+  }
+  .logged_in{
+    display: none;
+  }
+  .element>img {
+    width: 240px !important;
+    padding: 5px;
+  }
+  .last_item {
+    overflow: hidden;
+  }
+}

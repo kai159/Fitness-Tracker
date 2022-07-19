@@ -1,0 +1,23 @@
+/* Diese CSS-Datei ist relevant für die train.php Seite. */
+h2 {
+  text-align: center;
+}
+.text_align {
+  text-align: center;
+}
+td:first-of-type {
+  background-color: #80ba245b;
+}
+input {
+  background-color: #80ba2417;
+}
+@media (max-width: 500px) {
+  .text_align {
+    display: block;
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    overflow-x: hidden;
+    border-radius: 10px;
+  }
+}
