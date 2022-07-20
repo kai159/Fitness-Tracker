@@ -9,16 +9,37 @@
 </head>
 
 <body>
-    <div class="center borderpadding">
+    <div class="container mt-5 text-center">
         <h2>Training erstellen</h2>
         <form enctype="multipart/form-data" action="includes/training_create.inc.php" method="post">
-            <input type="text" name="name_ex" placeholder="Name" autofocus><br>
-            <input type="text" name="description" placeholder="Beschreibung"> <br>
-            <label for="file">Wählen Sie ein Bild aus:</label><br>
-            <input name="file" id="file" type="file" accept=".jpg, .jpeg, .png" style="margin-top:5px;border:none;" />
-            <br>
-            <button type="submit" name="training_submit">Erstellen</button> <br>
-        </form>
+        <div class="row">            
+            <div class="col-6 offset-3">
+                <div class="row">
+                    <div class="col-6 offset-3">
+                        <input class="form-control mt-3 text-center" type="text" name="name_ex" placeholder="Name" autofocus>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6 offset-3">
+                        <input class="form-control text-center" type="text" name="description" placeholder="Beschreibung">
+                    </div>           
+                <div class="row mt-3">
+                    <div class="col-6 offset-3">
+                        <label for="file">Wählen Sie ein Bild aus:</label><br>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-6 offset-3">
+                        <input class="form-control"  name="file" id="file" type="file" accept=".jpg, .jpeg, .png"  stlye="margin-left: 10px">
+                    </div>
+                </div>
+            </div>  
+            <div class="col justify-content-md-center">
+                <button class="btn btn-primary mt-2" type="submit" name="training_submit">Erstellen</button>
+            </div>
+            </form>
+        </div>
+        <br>
         <?php
         // Fehlermeldungen
         isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
@@ -50,8 +71,8 @@
                     break;
             }
         }
-        ?>
-    </div>
+        ?>     
+    </div>           
 </body>
 
 </html>
