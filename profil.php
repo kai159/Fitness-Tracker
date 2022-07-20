@@ -9,19 +9,40 @@
 </head>
 
 <body>
-    <div class="center borderpadding" style="top: 40%;">
+    <div class="container mt-5 text-center">
         <h2>Profil ändern</h2>
-        <form action="includes/profil.inc.php" method="post">
-            <button type="submit" name="change_pwd_submit">Passwort &aumlndern</button>
-            <input type="password" name="password_current" placeholder="Aktuelles Passwort" value="">
-            <input type="password" name="password" placeholder="Neues Passwort" value="">
-            <input type="password" name="password_again" placeholder="Passwort wdh." value=""> <br>
-        </form>
-        <form action="includes/profil.inc.php" method="post">
-            <button type="submit" name="change_user_submit">Namen &aumlndern</button>
-            <input type="text" name="name" placeholder="Wunschname" value="">
-        </form>
-
+        <div class="row">            
+            <div class="col-lg-5 text-center offset-lg-1">
+                <form action="includes/profil.inc.php" method="post">
+                    <div class="row">
+                        <div class="col-6 offset-3">
+                            <input class="form-control mt-3 text-center" type="password" name="password_current" placeholder="Aktuelles Passwort" autofocus>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6 offset-3">
+                            <input class="form-control text-center" type="password" name="password" placeholder="Neues Passwort">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6 offset-3">
+                            <input class="form-control text-center" type="password" name="password_again" placeholder="Passwort wdh.">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary mt-2" type="submit" name="change_pwd_submit">Passwort &aumlndern</button>
+                </form>
+            </div>
+            <div class="col-lg-5 text-center">
+                <form action="includes/profil.inc.php" method="post">
+                    <div class="row">
+                        <div class="col-6 offset-3">
+                            <input class="form-control mt-3 text-center" type="text" name="name" placeholder="Wunschname" autofocus>
+                            <button class="btn btn-primary mt-2" type="submit" name="change_user_submit">Namen &aumlndern</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        <br>
         <?php
         // Fehlermeldungen
         isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
@@ -47,7 +68,7 @@
                     break;
             }
         }
-        ?>
+        ?>                
     </div>
 </body>
 
