@@ -17,41 +17,43 @@
         <?php
         if (basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) != 'register.php' && basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) != 'login.php') {
         echo '
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Training
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="training.php">Übersicht</a></li>
-                    <li><a class="dropdown-item" href="training_overview.php">Alle Trainings</a></li>
-                    <li><a class="dropdown-item" href="training_create.php">Training erstellen</a></li>
-                </ul>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    &Uumlbungen
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <li><a class="dropdown-item" href="exercise.php">Übersicht</a></li>
-                    <li><a class="dropdown-item" href="exercise_create.php">Übung erstellen</a></li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link logged_in">'. $_SESSION['user'] .'</a>
-            </li>';
-            if (basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) == 'exercise.php' 
-            || basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) == 'training_overview.php') {
-                echo '<input id="search" size="9" onkeyup="search()" type="text" name="search" placeholder="Suche" autofocus>';
-                }
-            echo '
-                <li class="nav-item">
-                    <a class="nav-link" href="profil.php">Profil</a>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Training
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="training.php">Übersicht</a></li>
+                        <li><a class="dropdown-item" href="training_overview.php">Alle Trainings</a></li>
+                        <li><a class="dropdown-item" href="training_create.php">Training erstellen</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        &Uumlbungen
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="exercise.php">Übersicht</a></li>
+                        <li><a class="dropdown-item" href="exercise_create.php">Übung erstellen</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="includes/logout.inc.php">Ausloggen</a>
-                </li>
-            </nav>';
+                    <a class="nav-link logged_in">'. $_SESSION['user'] .'</a>
+                </li>';
+                if (basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) == 'exercise.php' 
+                || basename($_SERVER['REQUEST_URI'], '?' . $_SERVER['QUERY_STRING']) == 'training_overview.php') {
+                    echo '<input id="search" size="9" onkeyup="search()" type="text" name="search" placeholder="Suche" autofocus>';
+                    }
+                echo '
+                    <li class="nav-item">
+                        <a class="nav-link" href="profil.php">Profil</a>
+                    </li>
+                    <li class="nav-item">
+                    <a class="nav-link" href="includes/logout.inc.php">Ausloggen</a>
+                    </li>
+                </nav>
+            <header>';
         }
     
 
