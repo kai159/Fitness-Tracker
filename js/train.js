@@ -7,7 +7,6 @@ function set_add(id, name) {
       
       row.innerHTML = '<input type="hidden" name="'+ id + '_fkex_' + (table.rows.length - 1)+'"/input>';
   
-      // row.innerHTML = '<input type="hidden" name="'+ id + '_fkex_' + (table.rows.length - 1)+'"/input>';
       var cell = row.insertCell(0);
       cell.innerHTML = 'Satz ' + (table.rows.length - 1);
 
@@ -19,9 +18,11 @@ function set_add(id, name) {
 
       cell = row.insertCell(3);
       cell.innerHTML = '<input type="text" name="'+ name +'_type_'+  (table.rows.length - 1) +'" value="Standard"/input>';
+      cell.classList.add('hide')
       
       cell = row.insertCell(4);
       cell.innerHTML = '<input type="text" name="'+ name +'_comment_'+  (table.rows.length - 1) +'"/input>';
+      cell.classList.add('hide')
       
     });
   }
@@ -46,5 +47,18 @@ function set_add(id, name) {
       if ((table.rows.length - 1) > arr[2]){
         table.deleteRow(table.rows.length-1);
       }      
+    });
+  }
+
+  function extra_hidden() {
+    $(document).ready(function () {
+      let x = document.getElementsByClassName("hide");
+      var str = "table-cell";
+      if (x[0].style.display == "table-cell") {
+        str = "none";
+      }
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = str;
+      }
     });
   }

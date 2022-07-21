@@ -6,12 +6,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/train.js"></script>
     <?php include 'includes/navbar.php'; ?>
+
+    <style>
+        .hide{
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
 
     <div class="container text-center">
-        <h2>Training</h2>
+        <h2 onclick="extra_hidden()">Training</h2>
         <?php
         include 'includes/functions.php';
         //Erstellt einen neuen Eintrag
@@ -21,25 +27,26 @@
                 while ($row_ex = $result_exercises->fetch_assoc()) {
                     echo '
                     <form id="train_table" method="POST" action="includes/train.inc.php">
+                        <div class="d-block d-lg-none"><h5>' . $row_ex["name"] . '</h5> </div>
                         <div class="table-responsive text-center mt-2">
-                            <table class="table table-striped table-bordered"  id="' . $row_ex["id"] . '"> 
+                            <table class="table table-bordered"  id="' . $row_ex["id"] . '"> 
                             <tr> 
-                            <th>' . $row_ex["name"] . '</th>
+                            <th class="d-none d-lg-block ">' . $row_ex["name"] . '</th>
                             <th>Wiederholung</th>
                             <th>Gewicht</th>
-                            <th>Art</th>
-                            <th>Kommentar</th>
+                            <th class="hide">Art</th>
+                            <th class="hide">Kommentar</th>
                             </tr>';
                     $count = 0;
                     for ($i = 1; $i <= 3; $i++) {
                         echo '
                             <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $i . '"/input>
                             <tr>
-                            <td style="min-width: 140px">Satz ' . $i . '</td>
+                            <td class="d-none d-lg-block" style="min-width: 140px">Satz ' . $i . '</td>
                             <td><input type="number" name="' . $row_ex["name"] . '_rep_' . $i . '"/input></td>
                             <td><input type="number" name="' . $row_ex["name"] . '_weight_' . $i . '" step="0.001"/input></td>
-                            <td><input type="text" name="' . $row_ex["name"] . '_type_' . $i . '" value="Standard"/input></td>
-                            <td><input type="text" name="' . $row_ex["name"] . '_comment_' . $i . '"/input></td>
+                            <td class="hide"><input type="text" name="' . $row_ex["name"] . '_type_' . $i . '" value="Standard"/input></td>
+                            <td class="hide"><input type="text" name="' . $row_ex["name"] . '_comment_' . $i . '"/input></td>
                             </tr>';
                     }
                     echo '</table> 
@@ -68,13 +75,13 @@
                         $row_ex = $result_exercises->fetch_assoc();
                         echo '
                         <div class="table-responsive text-center mt-2">
-                        <table class="table table-striped table-bordered" id="' . $row_ex["id"] . '"> 
+                        <table class="table table-bordered" id="' . $row_ex["id"] . '"> 
                         <tr> 
                         <th>' . $row_ex["name"] . '</th>
                         <th>Wiederholung</th>
                         <th>Gewicht</th>
-                        <th>Art</th>
-                        <th>Kommentar</th>
+                        <th class="hide">Art</th>
+                        <th class="hide">Kommentar</th>
                         </tr>';
                     }
                     if ($tmp_name != $item['name'] | !isset($item['name'])) {
@@ -87,13 +94,13 @@
                         $row_ex = $result_exercises->fetch_assoc();
                         echo '
                         <div class="table-responsive text-center mt-2">
-                        <table class="table table-striped table-bordered" id="' . $row_ex["id"] . '"> 
+                        <table class="table table-bordered" id="' . $row_ex["id"] . '"> 
                         <tr> 
                         <th>' . $row_ex["name"] . '</th>
                         <th>Wiederholung</th>
                         <th>Gewicht</th>
-                        <th>Art</th>
-                        <th>Kommentar</th>
+                        <th class="hide">Art</th>
+                        <th class="hide">Kommentar</th>
                         </tr>';
                     }
                     echo '
@@ -102,8 +109,8 @@
                         <td style="min-width: 140px">Satz ' . $item['number'] . '</td>
                         <td><input type="number" name="' . $row_ex["name"] . '_rep_' . $item['number']  . '" value="' . $item['rep'] . '"/input></td>
                         <td><input type="number" name="' . $row_ex["name"] . '_weight_' . $item['number']  . '" value="' . $item['weight'] . '" step="0.001"/input></td>
-                        <td><input type="text" name="' . $row_ex["name"] . '_type_' . $item['number']  . '" value="' . $item['type'] . '"/input></td>
-                        <td><input type="text" name="' . $row_ex["name"] . '_comment_' . $item['number']  . '_' . $item['id'] . '" value="' . $item['comment'] . '"/input></td>
+                        <td class="hide"><input type="text" name="' . $row_ex["name"] . '_type_' . $item['number']  . '" value="' . $item['type'] . '"/input></td>
+                        <td class="hide"><input type="text" name="' . $row_ex["name"] . '_comment_' . $item['number']  . '_' . $item['id'] . '" value="' . $item['comment'] . '"/input></td>
                         </tr>';
                     $tmp_int = $item['number'];
                 }
