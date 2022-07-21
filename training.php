@@ -113,7 +113,7 @@
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
                     echo '
                     <div class="table-responsive">
-                    <table class="table table-striped table-hover table-bordered">          
+                    <table class="table table-striped table-bordered">          
                         <tr>';
                     if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
                         echo '<th><a class="col_blue" href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung:</a> ' . $set_time . '</th>';
