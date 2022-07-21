@@ -12,8 +12,9 @@
     <div class="container mt-5 text-center">
         <h2>Übung erstellen</h2>
         <form enctype="multipart/form-data" action="includes/exercise_create.inc.php" method="post">
-            <div class="row">            
-                <div class="col-6 offset-3">
+            <div class="row">         
+                <div class="col-lg-3 col-md-3"></div>   
+                <div class="col-lg-6 col-md-6">
                     <div class="row">
                         <div class="col-6 offset-3">
                             <input class="form-control mt-3 text-center" type="text" name="name_ex" placeholder="Name" autofocus>

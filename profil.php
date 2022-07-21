@@ -16,6 +16,9 @@
                 <form action="includes/profil.inc.php" method="post">
                     <div class="row">
                         <div class="col-6 offset-3">
+                            <label class="form-label fs-5">Passwort &aumlndern</label>
+                        </div>
+                        <div class="col-6 offset-3">
                             <input class="form-control mt-3 text-center" type="password" name="password_current" placeholder="Aktuelles Passwort" autofocus>
                         </div>
                     </div>
@@ -35,6 +38,9 @@
             <div class="col-lg-5 text-center">
                 <form action="includes/profil.inc.php" method="post">
                     <div class="row">
+                        <div class="col-6 offset-3">
+                            <label class="form-label fs-5">Namen &aumlndern</label>
+                        </div>
                         <div class="col-6 offset-3">
                             <input class="form-control mt-3 text-center" type="text" name="name" placeholder="Wunschname" autofocus>
                             <button class="btn btn-primary mt-2" type="submit" name="change_user_submit">Namen &aumlndern</button>

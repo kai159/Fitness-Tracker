@@ -13,7 +13,8 @@
         <h2>Training erstellen</h2>
         <form enctype="multipart/form-data" action="includes/training_create.inc.php" method="post">
         <div class="row">            
-            <div class="col-6 offset-3">
+            <div class="col-lg-3 col-md-3"></div>   
+            <div class="col-lg-6 col-md-6">
                 <div class="row">
                     <div class="col-6 offset-3">
                         <input class="form-control mt-3 text-center" type="text" name="name_ex" placeholder="Name" autofocus>
