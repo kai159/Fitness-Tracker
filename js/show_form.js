@@ -24,3 +24,10 @@ function show_form_img() {
     }
   });
 }
+
+function show_form_both(){
+  $(document).ready(function () {
+    show_form_img();
+    show_form_desc();
+  });
+}

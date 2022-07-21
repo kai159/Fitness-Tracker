@@ -33,7 +33,7 @@
                 if (isset($_GET['name'])) {
                     echo '<h3>' . $row['name'] . '</h3>';
                 } else {
-                    echo '<h3><a class="col_blue" href="exercise.php?name=' . $row['name'] . '">' . $row['name'] . '</a></h3>';
+                    echo '<h3><a href="exercise.php?name=' . $row['name'] . '">' . $row['name'] . '</a></h3>';
                 }
                 echo '
                 <p>' . $row['description'] . '</p>

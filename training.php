@@ -3,18 +3,23 @@
 
 <head>
     <title>Training Starten</title>
-    <link rel="stylesheet" href="css/table.css">
+    <!-- <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/alternate.css">
     <link rel="stylesheet" href="css/training.css">
-    <link rel="stylesheet" href="css/show_form.css">
+    <link rel="stylesheet" href="css/show_form.css"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/show_form.js"></script>
     <?php include 'includes/navbar.php'; ?>
+
+    <style>
+        td{min-width: 80px; width: 80px;}
+        tr td:first-child {min-width: 100px;}
+    </style>
 </head>
 
 <body>
-    <h2>Training</h2>
-    <div class="element margin_left margin_right heading_container">
+    <div class="container text-center">
+        <h2>Training</h2>
         <?php
         $tid = isset($_GET['training']) ? $_GET['training'] : NULL;
         if (isset($_SESSION['tid']) || isset($tid)) {
@@ -24,38 +29,13 @@
             $tid = $row['fk_training'];
             echo '
                 <h3>' . $row['name'] . '</h3>
-                <p>' . $row['description'] . '</p> ';
-            if ((isset($_GET['training']) and (($row['fk_user'] == $_SESSION['id'])) or ($_SESSION['user'] == 'admin') or $_SESSION['tid'] == $row['id'])) {
-                echo '<div class="div_left2right">
-                    <a class="col_blue" href="javascript:show_form_desc();">Beschreibung ändern</a>
-                    <form class="form_desc"enctype="multipart/form-data" action="includes/training.inc.php" method="post">
-                    <input type="text" name="changed_descr" placeholder="Beschreibung ändern"> <br>
-                    <input type="hidden" name="name_tr" value="' . $row['name'] . '">
-                    <input type="hidden" name="id_tr" value="' . $row['id'] . '">
-                    <button type="submit" name="update_descr">Ändern</button> <br>
-                    </form></div>
-                    ';
-            }
-            echo '
-                <img class="picture" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/>';
-            if ((isset($_GET['training']) and (($row['fk_user'] == $_SESSION['id'])) or ($_SESSION['user'] == 'admin') or $_SESSION['tid'] == $row['id'])) {
-                echo '<div class="div_left2right">
-                <a class="col_blue" href="javascript:show_form_img();">Bild ändern</a>
-                <form class="form_img"enctype="multipart/form-data" action="includes/training.inc.php" method="post">
-                <label for="file">Wählen Sie ein Bild aus:</label><br>
-                <input name="file" id="file" type="file" accept=".jpg, .jpeg, .png" style="margin-top:5px;border:none;" /> <br>
-                <input type="hidden" name="name_tr" value="' . $row['name'] . '">
-                <input type="hidden" name="id_tr" value="' . $row['id'] . '">
-                <button type="submit" name="update_img">Ändern</button> <br>
-                </form></div>
-                ';
-            }
-            echo '<br>';
-
-
+                <p>' . $row['description'] . '</p> 
+                <div class="row">
+                    <div class="col-xxl-4 col-lg-6 shadow-sm px-4 mt-3" style="min-width: 350px;">
+                    <img onclick="show_form_both()" class="mb-2" style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/>';
             if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
                 echo '<form action="train.php">
-                    <button type="submit">Starten</button> <br>
+                    <button class="btn btn-primary mb-2" type="submit">Starten</button> <br>
                 </form>';
             }
             // Fehlermeldungen
@@ -85,9 +65,31 @@
                         break;
                 }
             }
-
             echo '</div>';
-            echo '<div class="margin_left margin_right">';
+            if ((isset($_GET['training']) and (($row['fk_user'] == $_SESSION['id'])) or ($_SESSION['user'] == 'admin') or $_SESSION['tid'] == $row['id'])) {
+                echo '
+                <div class="col-xxl-4 col-lg-0 order-first"></div>
+                <div class="col-xxl-4 d-none d-xxl-block"></div>
+                <div class="col-xxl-4 d-none d-xxl-block"></div>
+                <div class="col-xxl-4 col-lg-6 mt-3">
+                <div class="div_left2right">            
+                    <form class="form_desc"enctype="multipart/form-data" style="display: none" action="includes/training.inc.php" method="post">
+                        <input type="text" name="changed_descr" placeholder="Beschreibung ändern"> <br>
+                        <input type="hidden" name="name_tr" value="' . $row['name'] . '">
+                        <input type="hidden" name="id_tr" value="' . $row['id'] . '">
+                        <button type="submit" name="update_descr">Ändern</button> <br>
+                    </form>
+                </div>
+                <form class="form_img" style="display: none" enctype="multipart/form-data" action="includes/training.inc.php" method="post">
+                <label for="file">Wählen Sie ein Bild aus:</label><br>
+                <input name="file" id="file" type="file" accept=".jpg, .jpeg, .png" style="margin-top:5px;border:none;" /> <br>
+                <input type="hidden" name="name_tr" value="' . $row['name'] . '">
+                <input type="hidden" name="id_tr" value="' . $row['id'] . '">
+                <button type="submit" name="update_img">Ändern</button> <br>
+                </form></div>
+                ';
+            }
+
             $arr_big = sort_training_view_array($row['id']);
             if (!empty($arr_big)) {
                 echo '<p class="pre_training"><strong>Vorheriges Training:</strong></p>';
@@ -109,8 +111,9 @@
                         $set_time = $tmp_explode_2[2] . '.' . $tmp_explode_2[1] . '.' . $tmp_explode_2[0];
                     }
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
-                    echo '<div class="table_container">
-                    <table>          
+                    echo '
+                    <div class="table-responsive">
+                    <table class="table table-striped table-hover table-bordered">          
                         <tr>';
                     if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
                         echo '<th><a class="col_blue" href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung:</a> ' . $set_time . '</th>';
@@ -119,7 +122,7 @@
                     }
 
                     for ($i = 0; $i < $max_sets; $i++) {
-                        echo '<th colspan="4">Satz ' . ($i + 1) . '</th>';
+                        echo '<th colspan="3">Satz ' . ($i + 1) . '</th>';
                         if ($i == $max_sets) {
                             echo '</tr>';
                         }
@@ -140,13 +143,13 @@
                                     <td>' . $item[$c++] . '</td>
                                     <td>' . $item[$c++] . '</td>
                                     <td>' . $item[$c++] . '</td>
-                                    <td>' . $item[$c++] . '</td>';
+                                    <td style="display: none;">' . $item[$c++] . '</td>';
                                 } else {
                                     echo '
                                 <td> 0 </td>
                                 <td> 0 </td>
                                 <td> - </td>
-                                <td> </td>';
+                                <td style="display: none;"> </td>';
                                 }
                                 if ($i == $max_sets) {
                                     echo '</tr>';
@@ -163,8 +166,9 @@
             echo '<p class="text_center">Bitte setzten Sie zunächst Ihr aktives Training fest.
          Diese finden Sie unter Training => Alle <a class="col_blue" href="training_overview.php">Trainings</a>.</p>';
         }
-        echo '</div> </div>';
+        echo '</div>';
         ?>
+    </div>
 
 </body>
 
