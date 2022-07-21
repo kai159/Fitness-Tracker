@@ -3,9 +3,6 @@
 
 <head>
     <title>Übungen</title>
-    <!-- <link rel="stylesheet" href="css/alternate.css">
-    <link rel="stylesheet" href="css/show_form.css"> -->
-    <link rel="stylesheet" href="css/exercise.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/exercise.js"></script>
     <script src="js/show_form.js"></script>
@@ -31,7 +28,7 @@
         if ($result->num_rows > 0) {
             $result_training = get_all_training_id_name();
             while ($row = $result->fetch_assoc()) {
-                echo '<div class="col-xxl-4 col-lg-6 shadow-sm px-4 mt-3" style="min-width: 400px;">
+                echo '<div class="col-xxl-4 col-lg-6 shadow-sm px-4 mt-3" style="min-width: 350px;">
                     <div class="searchable">';
                 if (isset($_GET['name'])) {
                     echo '<h3>' . $row['name'] . '</h3>';
@@ -41,7 +38,7 @@
                 echo '
                 <p>' . $row['description'] . '</p>
             </div>
-            <img style="width:350px; height:150px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> <br>
+            <img style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> <br>
             <form>        
             <select class="form-select" id="select_' . $row['id'] . '" name="option_training" style="max-width: 150px; margin: 5px auto 0px;">    
             <label for="training"></label>';
@@ -93,13 +90,14 @@
                 <div class="col-xxl-4 d-none d-xxl-block"></div>
                 <div class="col-xxl-4 col-lg-6 mt-3">
                     <form class="form_img"enctype="multipart/form-data" action="includes/exercise.inc.php" method="post">
-                        <label for="file">Wählen Sie ein Bild aus:</label><br>
+                        <label for="file">Bild ändern:</label><br>
                         <input class="form-control" name="file" id="file" type="file" accept=".jpg, .jpeg, .png"/> <br>
                         <input class="form-control" type="hidden" name="name_ex" value="' . $row['name'] . '">
                         <input class="form-control" type="hidden" name="id_ex" value="' . $row['id'] . '">
-                        <button class="btn btn-primary mb-4" type="submit" name="update_img">Ändern</button> <br>
+                        <button class="btn btn-primary mb-2" type="submit" name="update_img">Ändern</button> <br>
                     </form>
                     <form class="form_desc"enctype="multipart/form-data" action="includes/exercise.inc.php" method="post">
+                        <label for="file">Beschreibung ändern:</label><br>
                         <input class="form-control" type="text" name="changed_descr" placeholder="Beschreibung ändern"> <br>
                         <input class="form-control" type="hidden" name="name_ex" value="' . $row['name'] . '">
                         <input class="form-control" type="hidden" name="id_ex" value="' . $row['id'] . '">
