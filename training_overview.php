@@ -26,7 +26,7 @@
                         echo '
                             <form action="includes/training_overview.inc.php" method="post">
                                 <input type="hidden" name="training_id" value="' . $row['id'] . '" > <br>
-                                <button class="btn btn-primary mb-2" type="submit" name="training_overview_submit">Aktivieren</button> <br>
+                                <button class="btn btn-secondary mb-2" type="submit" name="training_overview_submit">Aktivieren</button> <br>
                             </form>
                         </div>
                         ';

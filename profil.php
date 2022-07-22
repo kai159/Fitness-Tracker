@@ -32,7 +32,7 @@
                             <input class="form-control text-center" type="password" name="password_again" placeholder="Passwort wdh.">
                         </div>
                     </div>
-                    <button class="btn btn-primary mt-2" type="submit" name="change_pwd_submit">Passwort &aumlndern</button>
+                    <button class="btn btn-secondary mt-2" type="submit" name="change_pwd_submit">Passwort &aumlndern</button>
                 </form>
             </div>
             <div class="col-lg-5 text-center">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-6 offset-3">
                             <input class="form-control mt-3 text-center" type="text" name="name" placeholder="Wunschname" autofocus>
-                            <button class="btn btn-primary mt-2" type="submit" name="change_user_submit">Namen &aumlndern</button>
+                            <button class="btn btn-secondary mt-2" type="submit" name="change_user_submit">Namen &aumlndern</button>
                         </div>
                     </div>
                 </form>

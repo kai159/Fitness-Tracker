@@ -53,7 +53,7 @@
                 echo '        
             </select> <br>
             <input type="hidden" name="name_ex" value="' . $row['id'] . '">
-            <button class="btn btn-primary mb-2" id="' . $row['id'] . '" onClick="training_add_submit(this.id)" name="training_add" type="button">Hinzufügen</button>
+            <button class="btn btn-secondary mb-2" id="' . $row['id'] . '" onClick="training_add_submit(this.id)" name="training_add" type="button">Hinzufügen</button>
             </form>';
             // Fehlermeldungen
             isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
@@ -95,14 +95,14 @@
                         <input class="form-control" name="file" id="file" type="file" accept=".jpg, .jpeg, .png"/> <br>
                         <input class="form-control" type="hidden" name="name_ex" value="' . $row['name'] . '">
                         <input class="form-control" type="hidden" name="id_ex" value="' . $row['id'] . '">
-                        <button class="btn btn-primary mb-2" type="submit" name="update_img">Ändern</button> <br>
+                        <button class="btn btn-secondary mb-2" type="submit" name="update_img">Ändern</button> <br>
                     </form>
                     <form class="form_desc"enctype="multipart/form-data" action="includes/exercise.inc.php" method="post">
                         <label for="file">Beschreibung ändern:</label><br>
                         <input class="form-control" type="text" name="changed_descr" placeholder="Beschreibung ändern"> <br>
                         <input class="form-control" type="hidden" name="name_ex" value="' . $row['name'] . '">
                         <input class="form-control" type="hidden" name="id_ex" value="' . $row['id'] . '">
-                        <button class="btn btn-primary" type="submit" name="update_descr">Ändern</button> <br>
+                        <button class="btn btn-secondary" type="submit" name="update_descr">Ändern</button> <br>
                     </form>
                 </div>';
         }

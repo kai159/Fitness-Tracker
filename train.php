@@ -52,14 +52,14 @@
                     }
                     echo '</table> 
                     </div>
-                    <button class="btn btn-primary mb-2" type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
-                    <button class="btn btn-primary mb-2" type="button" id="' . $row_ex["id"] . '_sub" onClick="set_sub(this.id)" name="reduce_set">-</button>
+                    <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
+                    <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_sub" onClick="set_sub(this.id)" name="reduce_set">-</button>
                     <br>';
                 }
                 echo '
                     <input type="hidden" name="a_tid_a" value="' . $_SESSION["tid"] . '"/input>
                     <input type="hidden" name="a_id_a" value="' . $_SESSION["id"] . '"/input>
-                    <button class="btn btn-primary mb-2" type="submit" name="train_submit">Save</button>
+                    <button class="btn btn-secondary mb-2" type="submit" name="train_submit">Save</button>
                     </from>';
             } else {
                 $tid = htmlspecialchars($_GET['tid']);
@@ -87,8 +87,8 @@
                     }
                     if ($tmp_name != $item['name'] | !isset($item['name'])) {
                         echo '</tr></table> </div>
-                        <button class="btn btn-primary mb-2" type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
-                        <button class="btn btn-primary mb-2" type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  . '" onClick="set_sub_edit(this.id)" name="reduce_set">-</button>
+                        <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
+                        <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  . '" onClick="set_sub_edit(this.id)" name="reduce_set">-</button>
                         <br>';
 
                         $tmp_name = $item['name'];
@@ -117,19 +117,19 @@
                 }
                 //Lestes Element der Foreach Schleife
                 echo '</tr> </table> </div>
-                    <button class="btn btn-primary mb-2" type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
-                    <button class="btn btn-primary mb-2" type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  . '" onClick="set_sub_edit(this.id)" name="reduce_set">-</button>
+                    <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
+                    <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  . '" onClick="set_sub_edit(this.id)" name="reduce_set">-</button>
                     <br>';
                 //Für den Submit Button
                 echo '
                     <input type="hidden" name="a_tid_a" value="' . $_SESSION["tid"] . '"/input>
                     <input type="hidden" name="a_id_a" value="' . $_SESSION["id"] . '"/input>
                     <input type="hidden" name="a_time_a" value="' . $modified_time . '"/input>
-                    <button class="btn btn-primary mt-2" type="submit" name="train_submit">Save</button>
+                    <button class="btn btn-secondary mt-2" type="submit" name="train_submit">Save</button>
                     </from>';
             }
         } else {
-            echo '<p>Bitte fügen Sie dem Training zuerst <a class="col_blue" href="exercise.php">Übungen</a> hinzu.</p>';
+            echo '<p>Bitte fügen Sie dem Training zuerst <a href="exercise.php">Übungen</a> hinzu.</p>';
         }
         ?>
     </div>

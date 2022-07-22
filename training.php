@@ -32,7 +32,7 @@
                     <img onclick="show_form_both()" class="mb-2" style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/>';
             if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
                 echo '<form action="train.php">
-                    <button class="btn btn-primary mb-2" type="submit">Starten</button> <br>
+                    <button class="btn btn-secondary mb-2" type="submit">Starten</button> <br>
                 </form>';
             }
             // Fehlermeldungen
@@ -113,7 +113,7 @@
                     <table class="table table-striped table-bordered b_table">          
                         <tr>';
                     if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
-                        echo '<th><a class="col_blue" href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung:</a> ' . $set_time . '</th>';
+                        echo '<th><a href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung:</a> ' . $set_time . '</th>';
                     } else {
                         echo '<th>Übung: ' . $set_time . '</th>';
                     }
@@ -161,7 +161,7 @@
             }
         } else {
             echo '<p class="text_center">Bitte setzten Sie zunächst Ihr aktives Training fest.
-         Diese finden Sie unter Training => Alle <a class="col_blue" href="training_overview.php">Trainings</a>.</p>';
+         Diese finden Sie unter Training => Alle <a href="training_overview.php">Trainings</a>.</p>';
         }
         echo '</div>';
         ?>

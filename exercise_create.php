@@ -36,7 +36,7 @@
                     </div>
                 </div>  
                 <div class="col justify-content-md-center">
-                    <button class="btn btn-primary mt-2" type="submit" name="exercise_submit">Erstellen</button>
+                    <button class="btn btn-secondary mt-2" type="submit" name="exercise_submit">Erstellen</button>
                 </div>
             </div>
         </form>

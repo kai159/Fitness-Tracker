@@ -36,7 +36,7 @@
                             <input class="form-control text-center" type="password" name="password_again" placeholder="Passwort wdh.">
                         </div>
                     </div>
-                        <button class="btn btn-primary mt-2" type="submit" name="register_submit">Best&aumltigen</button>
+                        <button class="btn btn-secondary mt-2" type="submit" name="register_submit">Best&aumltigen</button>
                 </form>
                 <a class="col_blue" href="login.php">Zurück</a>
                 <br>

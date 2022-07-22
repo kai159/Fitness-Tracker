@@ -24,7 +24,7 @@
                             <input class="form-control text-center" type="password" name="password" placeholder="Passwort">
                         </div>
                     </div>
-                        <button class="btn btn-primary mt-2" type="submit" name="login_submit">Best&aumltigen</button>
+                        <button class="btn btn-secondary mt-2" type="submit" name="login_submit">Best&aumltigen</button>
                 </form>
                 <a href="register.php">Registrieren</a>
                 <br>

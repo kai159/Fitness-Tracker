@@ -1,6 +1,5 @@
 .b_body{
-    background: rgb(152,110,223);
-    background: linear-gradient(31deg, rgba(152,110,223,0.25674019607843135) 0%, rgba(79,208,184,0.2147233893557423) 91%);
+    background: rgba(151, 110, 223, 0.089);
     
 }
 .container {
@@ -9,4 +8,11 @@
 
 .b_table{
     border: 1px solid !important;
+}
+
+h3 > a {
+    color: #212529 !important;
+}
+th > a {
+    color: #212529 !important;
 }
