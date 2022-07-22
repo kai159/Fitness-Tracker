@@ -3,12 +3,14 @@ function set_add(id, name) {
 
       let arr = id.split("_");
       var table = document.getElementById(arr[0]);
+      var check_hide = table.rows[table.rows.length-1].cells[4].style.display;
       var row = table.insertRow(table.rows.length);
-      
       row.innerHTML = '<input type="hidden" name="'+ id + '_fkex_' + (table.rows.length - 1)+'"/input>';
   
       var cell = row.insertCell(0);
       cell.innerHTML = 'Satz ' + (table.rows.length - 1);
+      cell.classList.add('d-none'); 
+      cell.classList.add('d-lg-block');
 
       cell = row.insertCell(1);
       cell.innerHTML = '<input type="number" name="'+ name +'_rep_'+  (table.rows.length - 1) +'"/input>';
@@ -18,12 +20,19 @@ function set_add(id, name) {
 
       cell = row.insertCell(3);
       cell.innerHTML = '<input type="text" name="'+ name +'_type_'+  (table.rows.length - 1) +'" value="Standard"/input>';
-      cell.classList.add('hide')
+      var type_cell = cell;
       
       cell = row.insertCell(4);
       cell.innerHTML = '<input type="text" name="'+ name +'_comment_'+  (table.rows.length - 1) +'"/input>';
-      cell.classList.add('hide')
+      var comment_cell = cell;
       
+
+      type_cell.classList.add('hide')
+      comment_cell.classList.add('hide')
+      if(check_hide == "table-cell"){
+        type_cell.style.display = "table-cell";
+        comment_cell.style.display = "table-cell";
+      } 
     });
   }
   
