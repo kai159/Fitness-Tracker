@@ -3,10 +3,7 @@
 
 <head>
     <title>Training Starten</title>
-    <!-- <link rel="stylesheet" href="css/table.css">
-    <link rel="stylesheet" href="css/alternate.css">
-    <link rel="stylesheet" href="css/training.css">
-    <link rel="stylesheet" href="css/show_form.css"> -->
+    <link rel="stylesheet" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/show_form.js"></script>
     <?php include 'includes/navbar.php'; ?>
@@ -17,7 +14,7 @@
     </style>
 </head>
 
-<body>
+<body class="b_body">
     <div class="container text-center">
         <h2>Training</h2>
         <?php
@@ -113,7 +110,7 @@
                     //Tabellenkopf. max_sets bestimmt die Sätze der Tabelle
                     echo '
                     <div class="table-responsive">
-                    <table class="table table-striped table-bordered">          
+                    <table class="table table-striped table-bordered b_table">          
                         <tr>';
                     if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
                         echo '<th><a class="col_blue" href="train.php?tid=' . $ar[1] . '&time=' . $ar[2] . '">Übung:</a> ' . $set_time . '</th>';

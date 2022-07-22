@@ -4,12 +4,13 @@
 <head>
     <title>Übungen</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <script src="js/exercise.js"></script>
     <script src="js/show_form.js"></script>
     <?php include 'includes/navbar.php'; ?>
 </head>
 
-<body>
+<body class="b_body">
     <?php
     if (isset($_GET['name'])) {
         echo '<h2 style="text-align: center;">Übung</h2>';

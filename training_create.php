@@ -3,12 +3,12 @@
 
 <head>
     <title>Training erstellen</title>
-    <link rel="stylesheet" href="css/logregdivs.css">
+    <link rel="stylesheet" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php include 'includes/navbar.php'; ?>
 </head>
 
-<body>
+<body class="b_body">
     <div class="container mt-5 text-center">
         <h2>Training erstellen</h2>
         <form enctype="multipart/form-data" action="includes/training_create.inc.php" method="post">

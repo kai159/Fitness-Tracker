@@ -3,12 +3,12 @@
 
 <head>
     <title>Login</title>
-    <!-- <link rel="stylesheet" href="css/logregdivs.css"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <?php include 'includes/navbar.php'; ?>
 </head>
 
-<body>
+<body class="b_body">
     <div class="container mt-5">
         <div class="row">            
             <div class="col-md-6 text-center offset-md-3">

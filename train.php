@@ -4,17 +4,18 @@
 <head>
     <title>Train</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <script src="js/train.js"></script>
     <?php include 'includes/navbar.php'; ?>
 
     <style>
         .hide{
             display: none;
-        }
+        }        
     </style>
 </head>
 
-<body>
+<body class="b_body">
 
     <div class="container text-center">
         <h2 onclick="extra_hidden()">Training</h2>
@@ -29,9 +30,9 @@
                     <form id="train_table" method="POST" action="includes/train.inc.php">
                         <div class="d-block d-lg-none"><h5>' . $row_ex["name"] . '</h5> </div>
                         <div class="table-responsive text-center mt-2">
-                            <table class="table table-bordered"  id="' . $row_ex["id"] . '"> 
+                            <table class="table table-bordered b_table"  id="' . $row_ex["id"] . '"> 
                             <tr> 
-                            <th class="d-none d-lg-block ">' . $row_ex["name"] . '</th>
+                            <th class="d-none d-lg-block">' . $row_ex["name"] . '</th>
                             <th>Wiederholung</th>
                             <th>Gewicht</th>
                             <th class="hide">Art</th>
@@ -75,7 +76,7 @@
                         $row_ex = $result_exercises->fetch_assoc();
                         echo '
                         <div class="table-responsive text-center mt-2">
-                        <table class="table table-bordered" id="' . $row_ex["id"] . '"> 
+                        <table class="table table-bordered b_table" id="' . $row_ex["id"] . '"> 
                         <tr> 
                         <th>' . $row_ex["name"] . '</th>
                         <th>Wiederholung</th>
@@ -94,7 +95,7 @@
                         $row_ex = $result_exercises->fetch_assoc();
                         echo '
                         <div class="table-responsive text-center mt-2">
-                        <table class="table table-bordered" id="' . $row_ex["id"] . '"> 
+                        <table class="table table-bordered b_table" id="' . $row_ex["id"] . '"> 
                         <tr> 
                         <th>' . $row_ex["name"] . '</th>
                         <th>Wiederholung</th>

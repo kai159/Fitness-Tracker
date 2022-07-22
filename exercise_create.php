@@ -3,12 +3,12 @@
 
 <head>
     <title>Übung erstellen</title>
-    <link rel="stylesheet" href="css/logregdivs.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
     <?php include 'includes/navbar.php'; ?>
 </head>
 
-<body>
+<body class="b_body">
     <div class="container mt-5 text-center">
         <h2>Übung erstellen</h2>
         <form enctype="multipart/form-data" action="includes/exercise_create.inc.php" method="post">
