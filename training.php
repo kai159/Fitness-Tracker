@@ -12,16 +12,18 @@
     <link rel="stylesheet" href="css/main.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/show_form.js"></script>
+    <script src="js/training.js"></script>
     <?php include 'includes/navbar.php'; ?>
     <style>
         td{min-width: 80px; width: 80px;}
         tr td:first-child {min-width: 100px;}
+        .hide{ display: none;}  
     </style>
 </head>
 
 <body class="b_body">
     <div class="container text-center">
-        <h2>Training</h2>
+        <h2 onclick="extra_hidden()">Training</h2>
         <?php
         $tid = isset($_GET['training']) ? $_GET['training'] : NULL;
         if (isset($_SESSION['tid']) || isset($tid)) {
@@ -30,7 +32,7 @@
             $row = $result->fetch_assoc();
             $tid = $row['fk_training'];
             echo '
-                <h3>' . $row['name'] . '</h3>
+                <h3 onclick="extra_hidden()">' . $row['name'] . '</h3>
                 <p>' . $row['description'] . '</p> 
                 <div class="row">
                     <div class="col-xxl-4 col-lg-6 shadow-sm px-4 mt-3" style="min-width: 350px;">
@@ -124,7 +126,7 @@
                     }
 
                     for ($i = 0; $i < $max_sets; $i++) {
-                        echo '<th colspan="3">Satz ' . ($i + 1) . '</th>';
+                        echo '<th class="table_col" colspan="2">Satz ' . ($i + 1) . '</th>';
                         if ($i == $max_sets) {
                             echo '</tr>';
                         }
@@ -144,14 +146,14 @@
                                     echo '
                                     <td>' . $item[$c++] . '</td>
                                     <td>' . $item[$c++] . '</td>
-                                    <td>' . $item[$c++] . '</td>
-                                    <td style="display: none;">' . $item[$c++] . '</td>';
+                                    <td class="hide">' . $item[$c++] . '</td>
+                                    <td class="hide">' . $item[$c++] . '</td>';
                                 } else {
                                     echo '
                                 <td> 0 </td>
                                 <td> 0 </td>
-                                <td> - </td>
-                                <td style="display: none;"> </td>';
+                                <td class="hide"> - </td>
+                                <td class="hide"> </td>';
                                 }
                                 if ($i == $max_sets) {
                                     echo '</tr>';
