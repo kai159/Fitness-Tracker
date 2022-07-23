@@ -1,8 +1,11 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 // dieser Code ermöglicht es die Beschreibung zu ändern
 if (isset($_POST['update_descr'])) {
     require 'dbcon.inc.php';
-    session_start();
     $name_ex = htmlspecialchars($_POST['name_tr']);
     $descr_new = htmlspecialchars($_POST['changed_descr']);
     $id_tr = htmlspecialchars($_POST['id_tr']);
@@ -21,11 +24,11 @@ if (isset($_POST['update_descr'])) {
     }
     $stmt->close();
     $con->close();
+    exit();
 }
 // dieser Code ermöglicht es das Bild zu ändern
 if (isset($_POST['update_img'])) {
     require 'dbcon.inc.php';
-    session_start();
     $name_ex = htmlspecialchars($_POST['name_tr']);
     $id_tr = htmlspecialchars($_POST['id_tr']);
     $file = $_FILES['file'];
@@ -38,6 +41,7 @@ if (isset($_POST['update_img'])) {
     }
     $stmt->close();
     $con->close();
+    exit();
 }
 //Dient als Validierung des Files. Prüft ob der Upload erfolgreich war,
 //die Größe passt, das Format stimmt.

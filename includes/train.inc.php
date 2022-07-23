@@ -1,15 +1,17 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 if (isset($_POST['train_submit'])) {
     include 'dbcon.inc.php';
     $count = 0;
     $id = $_POST['a_id_a'];
     $tid = $_POST['a_tid_a'];
     $time = (isset($_POST['a_time_a'])) ? $_POST['a_time_a'] : date('Y-m-d H:i:s');
-
-
     foreach ($_POST as $key => $value) {
         $expl = explode('_', $key);
-        if ($expl[2] != NULL){
+        if (isset($expl[2])){
             switch ($expl[1]) {
                 case 'fkex':
                     $fk_exercise = $expl[0];
@@ -55,29 +57,11 @@ if (isset($_POST['train_submit'])) {
         }
     }
     if (!isset($expl[3]) && !isset($_POST['a_time_a'])){
-    $stmt = $con->prepare("INSERT INTO user_training (fk_user, fk_training, time) VALUES (?, ?, ?);");
-    $stmt->bind_param('iis', $id, $tid, $time);
-    $stmt->execute();
-    $stmt->close();
+        $stmt = $con->prepare("INSERT INTO user_training (fk_user, fk_training, time) VALUES (?, ?, ?);");
+        $stmt->bind_param('iis', $id, $tid, $time);
+        $stmt->execute();
+        $stmt->close();
     }
     header('Location: ../training.php?');
+    exit();
 }
-
-
-// $stmt = $con->prepare("SELECT * FROM user_training WHERE fk_user=?");
-// $stmt->bind_param('i', $id);
-// $stmt->execute();
-// $stmt->store_result();
-// $result = $stmt->num_rows();
-// $stmt->close();
-// if($result > 0){
-//     $stmt = $con->prepare("UPDATE user_training SET fk_training=? WHERE fk_user=?;");
-//     $stmt->bind_param('ii', $tid, $id);
-//     $stmt->execute();
-//     $stmt->close();
-// }else{
-//     $stmt = $con->prepare("INSERT INTO user_training (fk_user, fk_training) VALUES (?, ?);");
-//     $stmt->bind_param('ii', $id, $tid);
-//     $stmt->execute();
-//     $stmt->close();
-// }

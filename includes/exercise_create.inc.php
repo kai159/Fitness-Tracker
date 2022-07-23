@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 //Dient als Validierung des Files. Prüft ob der Upload erfolgreich war,
 //die Größe passt, das Format stimmt.
 function check_file($file)
@@ -48,7 +52,6 @@ function compare_ex_name($name_ex)
 // Hier ist der Code um eine Übung zu erstellen und diese in die Datenbank zu legen.
 if (isset($_POST['exercise_submit'])) {
     require 'dbcon.inc.php';
-    session_start();
     $name = $_SESSION['user'];
     $id = $_SESSION['id'];
     $name_ex = htmlspecialchars($_POST['name_ex']);
@@ -86,4 +89,5 @@ if (isset($_POST['exercise_submit'])) {
     header('Location: ../exercise_create.php?ms=success');
     $stmt->close();
     $con->close();
+    exit();
 }

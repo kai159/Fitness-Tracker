@@ -1,3 +1,9 @@
+<?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start(); 
+    } 
+?>
 <!doctype html>
 <html lang="de">
 
@@ -7,7 +13,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/show_form.js"></script>
     <?php include 'includes/navbar.php'; ?>
-
     <style>
         td{min-width: 80px; width: 80px;}
         tr td:first-child {min-width: 100px;}

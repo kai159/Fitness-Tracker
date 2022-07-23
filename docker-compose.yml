@@ -5,6 +5,8 @@ services:
     build: .
     ports:
       - "8000:80"
+    networks:
+      - dock
   db:
     image: mariadb
     volumes:
@@ -12,12 +14,18 @@ services:
       - fit-db:/var/lib/mysql
     environment:
       MYSQL_DATABASE: fitnesstracker
-      MYSQL_ROOT_PASSWORD: secret123
+      MYSQL_ROOT_PASSWORD: pwd
       MYSQL_USER: user
       MYSQL_PASSWORD: password
+    networks:
+      - dock
   db-admin:
     image: adminer:latest
     ports:
       - "8080:8080"
+    networks:
+      - dock
 volumes:
   fit-db:
+networks:
+  dock:

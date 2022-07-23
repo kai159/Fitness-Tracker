@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 if (isset($_POST['register_submit'])) {
     require 'dbcon.inc.php';
     $name = htmlspecialchars($_POST['name']);
@@ -40,6 +44,7 @@ if (isset($_POST['register_submit'])) {
             $stmt->execute();
             if (!$stmt) {
                 header('Location: ../register.php?ms=fail&name=' . $name);
+                exit();
             }
             $stmt->close();
             $stmt = $con->prepare("SELECT * FROM user WHERE name=?;");
@@ -47,7 +52,6 @@ if (isset($_POST['register_submit'])) {
             $stmt->execute();
             $result = $stmt->get_result()->fetch_assoc();
             $stmt->close();
-            session_start();
             $_SESSION['user'] = $name;
             $_SESSION['id'] = $result['id'];
             header('Location: ../index.php');
@@ -55,4 +59,5 @@ if (isset($_POST['register_submit'])) {
     }
     $stmt->close();
     $con->close();
+    exit();
 }

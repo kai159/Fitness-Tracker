@@ -1,3 +1,10 @@
+<?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+?>
+<?php include 'login_session.php'; ?>
 <!doctype html>
 <html lang="de">
 
@@ -6,11 +13,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <?php include 'login_session.php'; ?>
     <style>
         .b_nav{
             background: rgb(0,0,0);
-background: linear-gradient(31deg, rgba(0,0,0,1) 0%, rgba(87,87,87,1) 91%);
+            background: linear-gradient(31deg, rgba(0,0,0,1) 0%, rgba(87,87,87,1) 91%);
         }
     </style>
 </head>

@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 //"bindet" das Training und die Übung zusammen
 if (isset($_POST['id_training']) && isset($_POST['id_exercise'])) {
     include 'dbcon.inc.php';
@@ -25,7 +29,6 @@ if (isset($_POST['id_training']) && isset($_POST['id_exercise'])) {
 // dieser Code ermöglicht es die Beschreibung zu ändern
 if (isset($_POST['update_descr'])) {
     require 'dbcon.inc.php';
-    session_start();
     $name_ex = htmlspecialchars($_POST['name_ex']);
     $descr_new = htmlspecialchars($_POST['changed_descr']);
     $id_ex = htmlspecialchars($_POST['id_ex']);
@@ -41,6 +44,7 @@ if (isset($_POST['update_descr'])) {
     $stmt->execute();
     if ($stmt) {
         header('Location: ../exercise.php?ms=success&name=' . $name_ex);
+        exit();
     }
     $stmt->close();
     $con->close();
@@ -48,7 +52,6 @@ if (isset($_POST['update_descr'])) {
 // dieser Code ermöglicht es das Bild zu ändern
 if (isset($_POST['update_img'])) {
     require 'dbcon.inc.php';
-    session_start();
     $name_ex = htmlspecialchars($_POST['name_ex']);
     $id_ex = htmlspecialchars($_POST['id_ex']);
     $file = $_FILES['file'];
@@ -58,6 +61,7 @@ if (isset($_POST['update_img'])) {
     $stmt->execute();
     if ($stmt) {
         header('Location: ../exercise.php?ms=success&name=' . $name_ex);
+        exit();
     }
     $stmt->close();
     $con->close();

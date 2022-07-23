@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 //Dient als Validierung des Files. Prüft ob der Upload erfolgreich war,
 //die Größe passt, das Format stimmt.
 function check_file($file)
@@ -50,7 +54,6 @@ function compare_ex_name($name_ex, $id)
 if (isset($_POST['training_submit'])) {
     require 'dbcon.inc.php';
     require 'functions.php';
-    session_start();
     $name = $_SESSION['user'];
     $id = $_SESSION['id'];
     $name_ex = htmlspecialchars($_POST['name_ex']);
@@ -93,4 +96,5 @@ if (isset($_POST['training_submit'])) {
 
     header('Location: ../training_create.php?ms=success&train_id=' . $tid);
     $con->close();
+    exit();
 }

@@ -1,4 +1,8 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
 if (isset($_POST['login_submit'])) {
     require 'dbcon.inc.php';
     $name = $_POST['name'];
@@ -28,8 +32,8 @@ if (isset($_POST['login_submit'])) {
 
         if (!$check) {
             header('Location: ../login.php?ms=wrong&name=' . $name);
+            exit();
         } else {
-            session_start();
             $_SESSION['user'] = $row['name'];
             $_SESSION['id'] = $row['id'];
             if (!is_null($row['active_training'])) {
@@ -39,5 +43,6 @@ if (isset($_POST['login_submit'])) {
         }
         $stmt->close();
         $con->close();
+        exit();
     }
 }
