@@ -38,9 +38,31 @@
                     <td><button onClick="exercise_delete_submit(this.id)" 
                     class="btn btn-secondary" id="' . $item['id'] . '_' . $_POST['tid'] . '">Löschen</button></td>
                     </tr>';
-
                 }
                 echo'</table>';
+                $result_training = get_single_training_active($_POST['tid']);
+                $row = $result_training->fetch_assoc();
+                echo'
+                <div class="row">
+                    <div class="col-xxl-6 col-lg-6 mt-3">        
+                        <form enctype="multipart/form-data" action="includes/training.inc.php" method="post">
+                            <label for="changed_descr">Wählen Sie eine Beschreibung aus:</label><br>
+                            <input type="text" name="changed_descr" placeholder="Beschreibung ändern"> <br>
+                            <input type="hidden" name="name_tr" value="' . $row['name'] . '">
+                            <input type="hidden" name="id_tr" value="' . $row['id'] . '">
+                            <button class="btn btn-secondary btn-sm" type="submit" name="update_descr">Ändern</button> <br>
+                        </form>
+                    </div>
+                    <div class="col-xxl-6 col-lg-6 mt-3">
+                        <form class="form_img"  enctype="multipart/form-data" action="includes/training.inc.php" method="post">
+                            <label for="file">Wählen Sie ein Bild aus:</label><br>
+                            <input name="file" id="file" type="file" accept=".jpg, .jpeg, .png" style="margin-top:5px;border:none;" /> <br>
+                            <input type="hidden" name="name_tr" value="' . $row['name'] . '">
+                            <input type="hidden" name="id_tr" value="' . $row['id'] . '">
+                            <button class="btn btn-secondary btn-sm" type="submit" name="update_img">Ändern</button> <br>
+                        </form>
+                    </div>
+                </div>';
             }
             ?>
         </div>
