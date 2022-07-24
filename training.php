@@ -35,8 +35,8 @@
                 <h3 onclick="extra_hidden()">' . $row['name'] . '</h3>
                 <p>' . $row['description'] . '</p> 
                 <div class="row">
-                    <div class="col-xxl-4 col-lg-6 shadow-sm px-4 mt-3" style="min-width: 350px;">
-                    <img onclick="show_form_both()" class="mb-2" style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/>';
+                    <div class="col-xxl-4 col-lg-4 shadow-sm px-4 mt-3" style="min-width: 350px;">
+                    <img class="mb-2" style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/>';
             if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
                 echo '
                 <div class="row">
@@ -86,31 +86,13 @@
                         break;
                 }
             }
-            echo '</div>';
-            if ((isset($_GET['training']) and (($row['fk_user'] == $_SESSION['id'])) or ($_SESSION['user'] == 'admin') or $_SESSION['tid'] == $row['id'])) {
-                echo '
-                <div class="col-xxl-4 col-lg-0 order-first"></div>
-                <div class="col-xxl-4 d-none d-xxl-block"></div>
-                <div class="col-xxl-4 d-none d-xxl-block"></div>
-                <div class="col-xxl-4 col-lg-6 mt-3">
-                <div class="div_left2right">            
-                    <form class="form_desc"enctype="multipart/form-data" style="display: none" action="includes/training.inc.php" method="post">
-                        <input type="text" name="changed_descr" placeholder="Beschreibung ändern"> <br>
-                        <input type="hidden" name="name_tr" value="' . $row['name'] . '">
-                        <input type="hidden" name="id_tr" value="' . $row['id'] . '">
-                        <button type="submit" name="update_descr">Ändern</button> <br>
-                    </form>
+            echo '
                 </div>
-                <form class="form_img" style="display: none" enctype="multipart/form-data" action="includes/training.inc.php" method="post">
-                <label for="file">Wählen Sie ein Bild aus:</label><br>
-                <input name="file" id="file" type="file" accept=".jpg, .jpeg, .png" style="margin-top:5px;border:none;" /> <br>
-                <input type="hidden" name="name_tr" value="' . $row['name'] . '">
-                <input type="hidden" name="id_tr" value="' . $row['id'] . '">
-                <button type="submit" name="update_img">Ändern</button> <br>
-                </form></div>
-                ';
-                
-            }
+                <div class="col-xxl-4 col-lg-4 order-first"></div>
+                <div class="col-xxl-4 d-none d-xxl-block"></div>
+                <div class="col-xxl-4 d-none d-xxl-block">
+                <div class="col-xxl-4 col-lg-4 mt-3"></div>
+                </div>';       
 
             $arr_big = sort_training_view_array($row['id']);
             if (!empty($arr_big)) {
