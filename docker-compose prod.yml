@@ -1,0 +1,30 @@
+version: "3.9"
+services:
+  web:
+    image: 897456169854/fit
+    ports:
+      - "8000:80"
+    networks:
+      - dock
+  db:
+    image: mariadb
+    volumes:
+      - ./export.sql:/docker-entrypoint-initdb.d/export.sql
+      - fit-db:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: fitnesstracker
+      MYSQL_ROOT_PASSWORD: pwd
+      MYSQL_USER: user
+      MYSQL_PASSWORD: aisjdaio190419asdi
+    networks:
+      - dock
+  db-admin:
+    image: adminer:latest
+    ports:
+      - "8080:8080"
+    networks:
+      - dock
+volumes:
+  fit-db:
+networks:
+  dock:
