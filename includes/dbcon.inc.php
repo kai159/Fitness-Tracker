@@ -11,7 +11,7 @@ if (!$con) {
 }
 
 
-// $con = mysqli_connect('db', 'user', 'password', 'fitnesstracker');
+// $con = mysqli_connect('db', 'user', 'aisjdaio190419asdi', 'fitnesstracker');
 // // sollte die Verbindung nicht funktionieren, dann wird eine Fehlermeldung ausgegeben
 // if (!$con) {
 //     die("Connection failed: " . mysqli_connect_error());

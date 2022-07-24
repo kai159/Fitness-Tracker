@@ -38,9 +38,24 @@
                     <div class="col-xxl-4 col-lg-6 shadow-sm px-4 mt-3" style="min-width: 350px;">
                     <img onclick="show_form_both()" class="mb-2" style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/>';
             if (isset($_GET['training']) === $_SESSION['tid'] || $_SESSION['tid'] == $row['id']) {
-                echo '<form action="train.php">
-                    <button class="btn btn-secondary mb-2" type="submit">Starten</button> <br>
-                </form>';
+                echo '
+                <div class="row">
+                    <div class="col-6">
+                        <form action="train.php">
+                            <button class="btn btn-secondary mb-2" type="submit">Starten</button>
+                        </form>
+                    </div>
+                    <div class="col-6 text-left">
+                        <form action="training_edit.php">
+                            <button class="btn btn-secondary mb-2" type="submit">Editieren</button>
+                        </form>
+                    </div>
+                </div>';               
+            } else{
+                echo '
+                    <form action="training_edit.php">
+                        <button class="btn btn-secondary mb-2" type="submit">Editieren</button>
+                    </form>';
             }
             // Fehlermeldungen
             isset($_GET['ms']) ? $message = $_GET['ms'] : $message = '';
@@ -92,6 +107,7 @@
                 <button type="submit" name="update_img">Ändern</button> <br>
                 </form></div>
                 ';
+                
             }
 
             $arr_big = sort_training_view_array($row['id']);
