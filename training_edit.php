@@ -11,6 +11,7 @@
     <title>Alle Trainings</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/main.css">
+    <script src="js/training_edit.js"></script>
     <?php include 'includes/navbar.php'; ?>
 </head>
 
@@ -20,29 +21,26 @@
         <div class="row">
             <?php
             include 'includes/functions.php';
-            $result = get_all_training();
+            $result = get_active_exercises_by_tid($_POST['tid']);
             if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo '<div class="col-xxl-4 col-lg-6 shadow-sm px-4 mt-3" style="min-width: 350px;">
-                    <div class="searchable"><h3><a class="col_blue" href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
-                    <p>' . $row['description'] . '</p> </div>
-                    <img style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
-                    <br>';
-                    if ($_SESSION['tid'] != $row['id']) {
-                        echo '
-                            <form action="includes/training_overview.inc.php" method="post">
-                                <input type="hidden" name="training_id" value="' . $row['id'] . '" > <br>
-                                <button class="btn btn-secondary mb-2" type="submit" name="training_overview_submit">Aktivieren</button> <br>
-                            </form>
-                        </div>
-                        ';
-                    } else {
-                        echo '</div>';
-                    }
+                echo'
+                <div class="table-responsive text-center mt-2">
+                    <table class="table table-bordered b_table"> 
+                    <tr> 
+                    <th>Name</th>
+                    <th>Entfernen</th>
+                    </tr>';
+                    
+                foreach($result as $item){
+                    echo'
+                    <tr id="' . $item['id'] . '">
+                    <td>' . $item['name'] . '</td>
+                    <td><button onClick="exercise_delete_submit(this.id)" 
+                    class="btn btn-secondary" id="' . $item['id'] . '_' . $_POST['tid'] . '">Löschen</button></td>
+                    </tr>';
+
                 }
-            } else {
-                echo '<p>Bitte legen Sie zunächst ein Training an.
-            Dies finden Sie unter Training => <a class="col_blue" href="training_create.php">Training</a> erstellen.</p>';
+                echo'</table>';
             }
             ?>
         </div>

@@ -245,3 +245,17 @@ function sort_training_view_array($training_id)
     }
     return $arr_big;
 }
+
+function get_active_exercises_by_tid($training_id)
+{
+    include 'dbcon.inc.php';
+    $stmt = $con->prepare("SELECT exercise.name, exercise.id FROM exercise 
+    JOIN training_exercise on exercise.id = training_exercise.fk_exercise 
+    WHERE training_exercise.fk_training=?
+    GROUP BY exercise.name;");
+    $stmt->bind_param('i', $training_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    return $result;
+}

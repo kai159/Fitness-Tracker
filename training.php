@@ -46,14 +46,16 @@
                         </form>
                     </div>
                     <div class="col-6 text-left">
-                        <form action="training_edit.php">
+                        <form method="POST" action="training_edit.php">
+                            <input type="hidden" name="tid" value="' . $row['id'] . '"/input>
                             <button class="btn btn-secondary mb-2" type="submit">Editieren</button>
                         </form>
                     </div>
                 </div>';               
             } else{
                 echo '
-                    <form action="training_edit.php">
+                    <form method="POST" action="training_edit.php">
+                        <input type="hidden" name="tid" value="' . $row['id'] . '"/input>
                         <button class="btn btn-secondary mb-2" type="submit">Editieren</button>
                     </form>';
             }
