@@ -46,7 +46,7 @@
                         </form>
                     </div>
                     <div class="col-6 text-left">
-                        <form method="POST" action="training_edit.php">
+                        <form method="GET" action="training_edit.php">
                             <input type="hidden" name="tid" value="' . $row['id'] . '"/input>
                             <button class="btn btn-secondary mb-2" type="submit">Editieren</button>
                         </form>
@@ -54,7 +54,7 @@
                 </div>';               
             } else{
                 echo '
-                    <form method="POST" action="training_edit.php">
+                    <form method="GET" action="training_edit.php">
                         <input type="hidden" name="tid" value="' . $row['id'] . '"/input>
                         <button class="btn btn-secondary mb-2" type="submit">Editieren</button>
                     </form>';
