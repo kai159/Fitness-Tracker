@@ -62,6 +62,14 @@
                             <button class="btn btn-secondary btn-sm" type="submit" name="update_img">Ändern</button> <br>
                         </form>
                     </div>
+                    <div class="col-xxl-4 col-lg-6 mt-3"></div>
+                    <div class="col-xxl-4 col-lg-6 mt-3">
+                        <form action="includes/training_edit.inc.php" method="post">
+                            <label for="file">Komplettes Training löschen:</label><br>
+                            <input type="hidden" name="id_tr" value="' . $row['id'] . '">
+                            <button class="btn btn-secondary btn-sm" type="submit" name="delete_submit">Löschen</button> <br>
+                        </form>
+                    </div>
                 </div>';
             }
             ?>
