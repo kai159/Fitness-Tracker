@@ -19,10 +19,18 @@
             <div class="row">
                 <?php
                 include 'includes/functions.php';
+                $var_col = 6;
                 $result = get_all_training();
                 if ($result->num_rows > 0) {
+
+                    if ($result->num_rows == 1){
+                        echo '<div class="col-xxl-4 col-lg-4"></div>';
+                        $var_col = 4;
+                    }
+
                     while ($row = $result->fetch_assoc()) {
-                        echo '<div class="col-xxl-4 col-lg-6 shadow-sm px-4 mt-3" style="min-width: 350px;">
+                        echo '
+                        <div class="col-xxl-4 col-lg-'.$var_col.' shadow-sm px-4 mt-3" style="min-width: 350px;">
                         <div class="searchable"><h3><a class="col_blue" href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
                         <p>' . $row['description'] . '</p> </div>
                         <img class="mb-2" style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
