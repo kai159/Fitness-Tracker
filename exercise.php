@@ -45,7 +45,7 @@
                 echo '
                 <p>' . $row['description'] . '</p>
             </div>
-            <img style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> <br>
+            <img class="mb-2" style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> <br>
             <form>        
             <select class="form-select" id="select_' . $row['id'] . '" name="option_training" style="max-width: 150px; margin: 5px auto 0px;">    
             <label for="training"></label>';
