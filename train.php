@@ -18,6 +18,15 @@
         .hide{
             display: none;
         }        
+        .d-lg-block {
+            border: none;
+        }
+        @media only screen and (max-width: 450px) {
+            input {
+                max-width: 100px;
+            }
+        }
+      
     </style>
 </head>
 
@@ -47,13 +56,13 @@
                     $count = 0;
                     for ($i = 1; $i <= 3; $i++) {
                         echo '
-                            <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $i . '"/input>
+                            <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $i . '"</input>
                             <tr>
-                            <td class="d-none d-lg-block" style="min-width: 140px">Satz ' . $i . '</td>
-                            <td><input type="number" name="' . $row_ex["name"] . '_rep_' . $i . '"/input></td>
-                            <td><input type="number" name="' . $row_ex["name"] . '_weight_' . $i . '" step="0.001"/input></td>
-                            <td class="hide"><input type="text" name="' . $row_ex["name"] . '_type_' . $i . '" value="Standard"/input></td>
-                            <td class="hide"><input type="text" name="' . $row_ex["name"] . '_comment_' . $i . '"/input></td>
+                            <td class="d-none d-lg-block" style="min-width: 140px">Satz ' . $i . ' </td>
+                            <td><input type="number" name="' . $row_ex["name"] . '_rep_' . $i . '" </input></td>
+                            <td><input type="number" name="' . $row_ex["name"] . '_weight_' . $i . '" step="0.001" </input></td>
+                            <td class="hide"><input type="text" name="' . $row_ex["name"] . '_type_' . $i . '" value="Standard" </input></td>
+                            <td class="hide"><input type="text" name="' . $row_ex["name"] . '_comment_' . $i . '" </input></td>
                             </tr>';
                     }
                     echo '</table> 
@@ -84,7 +93,7 @@
                         <div class="table-responsive text-center mt-2">
                         <table class="table table-bordered b_table" id="' . $row_ex["id"] . '"> 
                         <tr> 
-                        <th>' . $row_ex["name"] . '</th>
+                        <th class="d-none d-lg-block">' . $row_ex["name"] . '</th>
                         <th>Wiederholung</th>
                         <th>Gewicht</th>
                         <th class="hide">Art</th>
@@ -103,7 +112,7 @@
                         <div class="table-responsive text-center mt-2">
                         <table class="table table-bordered b_table" id="' . $row_ex["id"] . '"> 
                         <tr> 
-                        <th>' . $row_ex["name"] . '</th>
+                        <th class="d-none d-lg-block">' . $row_ex["name"] . '</th>
                         <th>Wiederholung</th>
                         <th>Gewicht</th>
                         <th class="hide">Art</th>
@@ -113,11 +122,11 @@
                     echo '
                         <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $item['number'] . '"/input>
                         <tr>
-                        <td style="min-width: 140px">Satz ' . $item['number'] . '</td>
-                        <td><input type="number" name="' . $row_ex["name"] . '_rep_' . $item['number']  . '" value="' . $item['rep'] . '"/input></td>
-                        <td><input type="number" name="' . $row_ex["name"] . '_weight_' . $item['number']  . '" value="' . $item['weight'] . '" step="0.001"/input></td>
-                        <td class="hide"><input type="text" name="' . $row_ex["name"] . '_type_' . $item['number']  . '" value="' . $item['type'] . '"/input></td>
-                        <td class="hide"><input type="text" name="' . $row_ex["name"] . '_comment_' . $item['number']  . '_' . $item['id'] . '" value="' . $item['comment'] . '"/input></td>
+                        <td class="d-none d-lg-block" style="min-width: 140px">Satz ' . $item['number'] . '</td>
+                        <td><input type="number" name="' . $row_ex["name"] . '_rep_' . $item['number']  . '" value="' . $item['rep'] . '"</input></td>
+                        <td><input type="number" name="' . $row_ex["name"] . '_weight_' . $item['number']  . '" value="' . $item['weight'] . '" step="0.001"</input></td>
+                        <td class="hide"><input type="text" name="' . $row_ex["name"] . '_type_' . $item['number']  . '" value="' . $item['type'] . '"</input></td>
+                        <td class="hide"><input type="text" name="' . $row_ex["name"] . '_comment_' . $item['number']  . '_' . $item['id'] . '" value="' . $item['comment'] . '"</input></td>
                         </tr>';
                     $tmp_int = $item['number'];
                 }

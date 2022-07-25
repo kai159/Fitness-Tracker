@@ -25,7 +25,7 @@
                         echo '<div class="col-xxl-4 col-lg-6 shadow-sm px-4 mt-3" style="min-width: 350px;">
                         <div class="searchable"><h3><a class="col_blue" href="training.php?training=' . $row['id'] . '">' . $row['name'] . '</a></h3>
                         <p>' . $row['description'] . '</p> </div>
-                        <img style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
+                        <img class="mb-2" style="width:270px; height:120px;" src="data:image/jpeg;base64,' . base64_encode($row['picture']) . '"/> 
                         <br>';
                         if ($_SESSION['tid'] != $row['id']) {
                             echo '
