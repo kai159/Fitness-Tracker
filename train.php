@@ -98,6 +98,11 @@
                         <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
                         <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  . '" onClick="set_sub(this.id)" name="reduce_set">-</button>
                         <br>';
+
+                    //For added exercises 
+                    while ($row_ex = $result_exercises->fetch_assoc()){
+                        fresh_train_output($row_ex['name'], $row_ex['id']);
+                    }
                     //Für den Submit Button
                     echo '
                     <input type="hidden" name="a_tid_a" value="' . $_SESSION["tid"] . '"/input>
@@ -107,35 +112,7 @@
                 } else {
                     //First Training
                     while ($row_ex = $result_exercises->fetch_assoc()) {
-                        echo '
-                        <form id="train_table" method="POST" action="includes/train.inc.php">
-                            <div class="d-block d-lg-none"><h5>' . $row_ex["name"] . '</h5> </div>
-                            <div class="table-responsive text-center mt-2">
-                                <table class="table table-bordered b_table"  id="' . $row_ex["id"] . '"> 
-                                <tr> 
-                                <th class="d-none d-lg-block">' . $row_ex["name"] . '</th>
-                                <th>Wiederholung</th>
-                                <th>Gewicht</th>
-                                <th class="hide">Art</th>
-                                <th class="hide">Kommentar</th>
-                                </tr>';
-                        $count = 0;
-                        for ($i = 1; $i <= 3; $i++) {
-                            echo '
-                                <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $i . '"</input>
-                                <tr>
-                                <td class="d-none d-lg-block" style="min-width: 140px">Satz ' . $i . ' </td>
-                                <td><input type="number" name="' . $row_ex["name"] . '_rep_' . $i . '" </input></td>
-                                <td><input type="number" name="' . $row_ex["name"] . '_weight_' . $i . '" step="0.001" </input></td>
-                                <td class="hide"><input type="text" name="' . $row_ex["name"] . '_type_' . $i . '" value="Standard" </input></td>
-                                <td class="hide"><input type="text" name="' . $row_ex["name"] . '_comment_' . $i . '" </input></td>
-                                </tr>';
-                        }
-                        echo '</table> 
-                        </div>
-                        <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
-                        <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_sub" onClick="set_sub(this.id)" name="reduce_set">-</button>
-                        <br>';
+                        fresh_train_output($row_ex['name'], $row_ex['id']);
                     }
                     echo '
                         <input type="hidden" name="a_tid_a" value="' . $_SESSION["tid"] . '"/input>
@@ -143,7 +120,7 @@
                         <button class="btn btn-secondary mb-2" type="submit" name="train_submit">Save</button>
                         </from>';
                 }
-            } else {
+            } else { //training edit
                 $tid = htmlspecialchars($_GET['tid']);
                 $time = htmlspecialchars($_GET['time']);
                 $modified_time = substr_replace($time, ' ', 10, 1);
