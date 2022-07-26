@@ -71,6 +71,9 @@
 
                             $tmp_name = $item['name'];
                             $row_ex = $result_exercises->fetch_assoc();
+                            if(!isset($row_ex['name'])){
+                                goto end;
+                            }
                             echo '
                             <div class="table-responsive text-center mt-2">
                             <table class="table table-bordered b_table" id="' . $row_ex["id"] . '"> 
@@ -103,6 +106,7 @@
                     while ($row_ex = $result_exercises->fetch_assoc()){
                         fresh_train_output($row_ex['name'], $row_ex['id']);
                     }
+                    end:
                     //Für den Submit Button
                     echo '
                     <input type="hidden" name="a_tid_a" value="' . $_SESSION["tid"] . '"/input>
@@ -111,6 +115,7 @@
                     </from>';
                 } else {
                     //First Training
+                    echo '<form id="train_table" method="POST" action="includes/train.inc.php">';
                     while ($row_ex = $result_exercises->fetch_assoc()) {
                         fresh_train_output($row_ex['name'], $row_ex['id']);
                     }

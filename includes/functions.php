@@ -84,10 +84,9 @@ function get_training_all_sets($id, $tid, $time)
     JOIN user_training on user_training.fk_training = training.id
     JOIN eset on eset.time = user_training.time
     JOIN exercise on eset.fk_exercise = exercise.id
-    where user_training.fk_user =? AND user_training.time =? AND user_training.fk_training =? 
-	-- where user_training.time = (SELECT max(user_training.time) FROM user_training WHERE user_training.fk_training =?)  
-    GROUP BY eset.id
-    ORDER BY eset.time, exercise.name, eset.id;");
+    where user_training.fk_user =? AND user_training.time =? AND user_training.fk_training =?");
+	// where user_training.time = (SELECT max(user_training.time) FROM user_training WHERE user_training.fk_training =?)  
+    
     $stmt->bind_param('isi', $id, $time, $tid);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -103,7 +102,8 @@ function get_training_all_all_sets($tid)
     JOIN user_training on user_training.fk_training = training.id
     JOIN eset on eset.time = user_training.time
     JOIN exercise on eset.fk_exercise = exercise.id
-	WHERE user_training.fk_training =?");
+	WHERE user_training.fk_training =?
+    ORDER BY eset.id");
     // -- ORDER BY eset.time, exercise.name, eset.id;");
     $stmt->bind_param('i', $tid);
     $stmt->execute();
@@ -267,9 +267,9 @@ function get_last_training_all_sets($tid)
     JOIN user_training on user_training.fk_training = training.id
     JOIN eset on eset.time = user_training.time
     JOIN exercise on eset.fk_exercise = exercise.id
-	where user_training.time = (SELECT max(user_training.time) FROM user_training WHERE user_training.fk_training =?)  
-    GROUP BY eset.id
-    ORDER BY eset.time, exercise.name, eset.id;");
+	where user_training.time = (SELECT max(user_training.time) FROM user_training WHERE user_training.fk_training =?)");
+    // GROUP BY eset.id
+    // ORDER BY eset.time, exercise.name, eset.id;");
     $stmt->bind_param('i', $tid);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -277,9 +277,9 @@ function get_last_training_all_sets($tid)
     return $result;
 }
 
-function fresh_train_output($ex_name, $ex_id){
-echo '
-    <form id="train_table" method="POST" action="includes/train.inc.php">
+function fresh_train_output($ex_name, $ex_id, $table_tmp = NULL){
+    $table_id = (isset($table_tmp)) ? '' : $table_tmp;
+    echo '    
         <div class="d-block d-lg-none"><h5>' . $ex_name . '</h5> </div>
         <div class="table-responsive text-center mt-2">
             <table class="table table-bordered b_table"  id="' . $ex_id . '"> 
