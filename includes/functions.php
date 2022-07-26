@@ -259,3 +259,21 @@ function get_active_exercises_by_tid($training_id)
     $stmt->close();
     return $result;
 }
+
+function get_last_training_all_sets($tid)
+{
+    include 'dbcon.inc.php';
+    $stmt = $con->prepare("SELECT exercise.name, eset.id, eset.rep, eset.weight, eset.number, user_training.time, eset.type, eset.comment
+    FROM training    
+    JOIN user_training on user_training.fk_training = training.id
+    JOIN eset on eset.time = user_training.time
+    JOIN exercise on eset.fk_exercise = exercise.id
+	where user_training.time = (SELECT max(user_training.time) FROM user_training WHERE user_training.fk_training =?)  
+    GROUP BY eset.id
+    ORDER BY eset.time, exercise.name, eset.id;");
+    $stmt->bind_param('i', $tid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $stmt->close();
+    return $result;
+}

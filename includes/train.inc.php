@@ -10,6 +10,8 @@ if (isset($_POST['train_submit'])) {
     $tid = $_POST['a_tid_a'];
     $time = (isset($_POST['a_time_a'])) ? $_POST['a_time_a'] : date('Y-m-d H:i:s');
     foreach ($_POST as $key => $value) {
+        var_dump($key);
+        echo'<br>';
         $expl = explode('_', $key);
         if (isset($expl[2])){
             switch ($expl[1]) {
@@ -32,7 +34,6 @@ if (isset($_POST['train_submit'])) {
                 break;
             }
             $count++;
-                                
             if ($count > 4) {
                 if (!isset($expl[3]) && !isset($_POST['a_time_a'])){
                     $stmt = $con->prepare("INSERT INTO eset (rep, weight, fk_exercise, fk_training, comment, type, number, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
