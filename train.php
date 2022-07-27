@@ -3,6 +3,16 @@
     { 
         session_start(); 
     } 
+
+    function explode_name($string){
+        $tmp_expl = explode(' ', $string);
+        if (count($tmp_expl)>=1){
+            $ex_name = implode('-', $tmp_expl);
+        } else {
+            $ex_name = $string;
+        }
+        return $ex_name;
+    }
 ?>
 <!doctype html>
 <html lang="de">
@@ -51,11 +61,14 @@
                         if ($tmp_name == NULL) {
                             $tmp_name = $item['name'];
                             $row_ex = $result_exercises->fetch_assoc();
+
+                            $ex_name = explode_name($row_ex['name']);
+
                             echo '
                             <div class="table-responsive text-center mt-2">
                             <table class="table table-bordered b_table" id="' . $row_ex["id"] . '"> 
                             <tr> 
-                            <th class="d-none d-lg-block">' . $row_ex["name"] . '</th>
+                            <th class="d-none d-lg-block">' . $ex_name . '</th>
                             <th>Wiederholung</th>
                             <th>Gewicht</th>
                             <th class="hide">Art</th>
@@ -71,6 +84,9 @@
 
                             $tmp_name = $item['name'];
                             $row_ex = $result_exercises->fetch_assoc();
+
+                            $ex_name = explode_name($row_ex['name']);
+
                             if(!isset($row_ex['name'])){
                                 goto end;
                             }
@@ -78,7 +94,7 @@
                             <div class="table-responsive text-center mt-2">
                             <table class="table table-bordered b_table" id="' . $row_ex["id"] . '"> 
                             <tr> 
-                            <th class="d-none d-lg-block">' . $row_ex["name"] . '</th>
+                            <th class="d-none d-lg-block">' . $ex_name . '</th>
                             <th>Wiederholung</th>
                             <th>Gewicht</th>
                             <th class="hide">Art</th>
@@ -89,10 +105,10 @@
                             <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $count++ . '"/input>
                             <tr>
                             <td class="d-none d-lg-block" style="min-width: 140px">Satz ' . $count . '</td>
-                            <td><input type="number" name="' . $row_ex["name"] . '_rep_' . $count  . '" value="' . $item['rep'] . '"</input></td>
-                            <td><input type="number" name="' . $row_ex["name"] . '_weight_' . $count  . '" value="' . $item['weight'] . '" step="0.001"</input></td>
-                            <td class="hide"><input type="text" name="' . $row_ex["name"] . '_type_' . $count  . '" value="' . $item['type'] . '"</input></td>
-                            <td class="hide"><input type="text" name="' . $row_ex["name"] . '_comment_' . $count  . '" value="' . $item['comment'] . '"</input></td>
+                            <td><input type="number" name="' . $ex_name . '_rep_' . $count  . '" value="' . $item['rep'] . '"</input></td>
+                            <td><input type="number" name="' . $ex_name . '_weight_' . $count  . '" value="' . $item['weight'] . '" step="0.001"</input></td>
+                            <td class="hide"><input type="text" name="' . $ex_name . '_type_' . $count  . '" value="' . $item['type'] . '"</input></td>
+                            <td class="hide"><input type="text" name="' . $ex_name . '_comment_' . $count  . '" value="' . $item['comment'] . '"</input></td>
                             </tr>';
                         $tmp_int = $item['number'];
                     }
@@ -138,11 +154,14 @@
                     if ($tmp_name == NULL) {
                         $tmp_name = $item['name'];
                         $row_ex = $result_exercises->fetch_assoc();
+                        
+                        $ex_name = explode_name($row_ex['name']);
+                            
                         echo '
                         <div class="table-responsive text-center mt-2">
                         <table class="table table-bordered b_table" id="' . $row_ex["id"] . '"> 
                         <tr> 
-                        <th class="d-none d-lg-block">' . $row_ex["name"] . '</th>
+                        <th class="d-none d-lg-block">' . $ex_name . '</th>
                         <th>Wiederholung</th>
                         <th>Gewicht</th>
                         <th class="hide">Art</th>
@@ -157,11 +176,14 @@
 
                         $tmp_name = $item['name'];
                         $row_ex = $result_exercises->fetch_assoc();
+
+                        $ex_name = explode_name($row_ex['name']);
+
                         echo '
                         <div class="table-responsive text-center mt-2">
                         <table class="table table-bordered b_table" id="' . $row_ex["id"] . '"> 
                         <tr> 
-                        <th class="d-none d-lg-block">' . $row_ex["name"] . '</th>
+                        <th class="d-none d-lg-block">' . $ex_name . '</th>
                         <th>Wiederholung</th>
                         <th>Gewicht</th>
                         <th class="hide">Art</th>
@@ -172,16 +194,16 @@
                         <input type="hidden" name="' . $row_ex["id"] . '_fkex_' . $item['number'] . '"/input>
                         <tr>
                         <td class="d-none d-lg-block" style="min-width: 140px">Satz ' . $item['number'] . '</td>
-                        <td><input type="number" name="' . $row_ex["name"] . '_rep_' . $item['number']  . '" value="' . $item['rep'] . '"</input></td>
-                        <td><input type="number" name="' . $row_ex["name"] . '_weight_' . $item['number']  . '" value="' . $item['weight'] . '" step="0.001"</input></td>
-                        <td class="hide"><input type="text" name="' . $row_ex["name"] . '_type_' . $item['number']  . '" value="' . $item['type'] . '"</input></td>
-                        <td class="hide"><input type="text" name="' . $row_ex["name"] . '_comment_' . $item['number']  . '_' . $item['id'] . '" value="' . $item['comment'] . '"</input></td>
+                        <td><input type="number" name="' . $ex_name . '_rep_' . $item['number']  . '" value="' . $item['rep'] . '"</input></td>
+                        <td><input type="number" name="' . $ex_name . '_weight_' . $item['number']  . '" value="' . $item['weight'] . '" step="0.001"</input></td>
+                        <td class="hide"><input type="text" name="' . $ex_name . '_type_' . $item['number']  . '" value="' . $item['type'] . '"</input></td>
+                        <td class="hide"><input type="text" name="' . $ex_name . '_comment_' . $item['number']  . '_' . $item['id'] . '" value="' . $item['comment'] . '"</input></td>
                         </tr>';
                     $tmp_int = $item['number'];
                 }
                 //Lestes Element der Foreach Schleife
                 echo '</tr> </table> </div>
-                    <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $row_ex["name"] . '">+</button>
+                    <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_add" onClick="set_add(this.id, this.name)" name="' . $ex_name . '">+</button>
                     <button class="btn btn-secondary mb-2" type="button" id="' . $row_ex["id"] . '_sub_' . $tmp_int  . '" onClick="set_sub_edit(this.id)" name="reduce_set">-</button>
                     <br>';
                 //Für den Submit Button

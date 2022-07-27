@@ -103,7 +103,7 @@ function get_training_all_all_sets($tid)
     JOIN eset on eset.time = user_training.time
     JOIN exercise on eset.fk_exercise = exercise.id
 	WHERE user_training.fk_training =?
-    ORDER BY eset.id");
+    ORDER BY eset.time, exercise.name, eset.id;");
     // -- ORDER BY eset.time, exercise.name, eset.id;");
     $stmt->bind_param('i', $tid);
     $stmt->execute();
@@ -250,8 +250,7 @@ function get_active_exercises_by_tid($training_id)
     include 'dbcon.inc.php';
     $stmt = $con->prepare("SELECT exercise.name, exercise.id FROM exercise 
     JOIN training_exercise on exercise.id = training_exercise.fk_exercise 
-    WHERE training_exercise.fk_training=?
-    GROUP BY exercise.name;");
+    WHERE training_exercise.fk_training=?");
     $stmt->bind_param('i', $training_id);
     $stmt->execute();
     $result = $stmt->get_result();
