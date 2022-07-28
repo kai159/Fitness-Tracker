@@ -32,7 +32,6 @@ if (isset($_POST['train_submit'])) {
                 break;
             }
             $count++;
-                                
             if ($count > 4) {
                 if (!isset($expl[3]) && !isset($_POST['a_time_a'])){
                     $stmt = $con->prepare("INSERT INTO eset (rep, weight, fk_exercise, fk_training, comment, type, number, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
@@ -40,6 +39,7 @@ if (isset($_POST['train_submit'])) {
                     $stmt->execute();
                     $stmt->close();
                     $count = 0;
+                    echo'<br>';
                 } else {
                     if(!isset($expl[3])){
                         $stmt = $con->prepare("INSERT INTO eset (rep, weight, fk_exercise, fk_training, comment, type, number, time) VALUES (?, ?, ?, ?, ?, ?, ?, ?);");
